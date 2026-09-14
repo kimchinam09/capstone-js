@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1/0" />
+    <meta name="description" content="Trang quản trị sản phẩm PhoneStore" />
+    <title>Quản trị sản phẩm - PhoneStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+  </head>
+  <body class="admin-page">
+    <header class="site-header admin-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-icon">P</span>
+          <span>CyberStore Admin</span>
+        </a>
+        <nav class="main-nav" aria-label="Điều hướng quản trị">
+          <a class="nav-link" href="../customer/customer.html">Trang bán hàng</a>
+          <span class="admin-label">Quản trị viên</span>
+        </nav>
+      </div>
+    </header>
+
+    <main class="admin-main container">
+      <div class="admin-title-row">
+        <div>
+          <p class="eyebrow">Quản lý cửa hàng</p>
+          <h1>Danh sách sản phẩm</h1>
+          <p id="productSummary" class="muted-text">Đang tải dữ liệu...</p>
+        </div>
+        <button id="addProductButton" class="button button-primary" type="button">+ Thêm sản phẩm</button>
+      </div>
+
+      <section class="admin-toolbar" aria-label="Công cụ lọc danh sách">
+        <label class="search-field" for="searchInput">
+          <span class="sr-only">Tìm theo tên sản phẩm</span>
+          <input id="searchInput" type="search" placeholder="Tìm theo tên sản phẩm..." autocomplete="off" />
+        </label>
+        <label class="filter-field compact" for="sortSelect">
+          <span class="sr-only">Sắp xếp theo giá</span>
+          <select id="sortSelect">
+            <option value="default">Sắp xếp mặc định</option>
+            <option value="price-asc">Giá thấp đến cao</option>
+            <option value="price-desc">Giá cao đến thấp</option>
+          </select>
+        </label>
+      </section>
+
+      <div id="adminStatus" class="status-message">Đang tải sản phẩm...</div>
+
+      <div class="table-wrapper">
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Sản phẩm</th>
+              <th>Loại</th>
+              <th>Giá</th>
+              <th>Màn hình</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <div id="productModal" class="modal" hidden>
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">Thông tin sản phẩm</p>
+            <h2 id="modalTitle">Thêm sản phẩm</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-modal aria-label="Đóng biểu mẫu">×</button>
+        </div>
+
+        <form id="productForm" novalidate>
+          <input id="productId" type="hidden" />
+          <div class="form-grid">
+            <label class="form-field full-width">
+              <span>Tên sản phẩm *</span>
+              <input id="name" name="name" type="text" placeholder="Ví dụ: Samsung Galaxy S24" />
+              <small class="error-message" data-error-for="name"></small>
+            </label>
+
+            <label class="form-field">
+              <span>Giá bán *</span>
+              <input id="price" name="price" type="number" min="1" placeholder="20000000" />
+              <small class="error-message" data-error-for="price"></small>
+            </label>
+
+            <label class="form-field">
+              <span>Loại sản phẩm *</span>
+              <select id="type" name="type">
+                <option value="">Chọn loại</option>
+                <option value="samsung">Samsung</option>
+                <option value="iphone">iPhone</option>
+              </select>
+              <small class="error-message" data-error-for="type"></small>
+            </label>
+
+            <label class="form-field">
+              <span>Màn hình *</span>
+              <input id="screen" name="screen" type="text" placeholder="6/7 inch" />
+              <small class="error-message" data-error-for="screen"></small>
+            </label>
+
+            <label class="form-field">
+              <span>Camera trước *</span>
+              <input id="frontCamera" name="frontCamera" type="text" placeholder="12 MP" />
+              <small class="error-message" data-error-for="frontCamera"></small>
+            </label>
+
+            <label class="form-field full-width">
+              <span>Camera sau *</span>
+              <input id="backCamera" name="backCamera" type="text" placeholder="Chính 48 MP và phụ 12 MP" />
+              <small class="error-message" data-error-for="backCamera"></small>
+            </label>
+
+            <label class="form-field full-width">
+              <span>URL hình ảnh *</span>
+              <input id="img" name="img" type="url" placeholder="https://example.com/phone.jpg" />
+              <small class="error-message" data-error-for="img"></small>
+            </label>
+
+            <label class="form-field full-width">
+              <span>Mô tả *</span>
+              <textarea id="desc" name="desc" rows="3" placeholder="Mô tả ngắn về sản phẩm"></textarea>
+              <small class="error-message" data-error-for="desc"></small>
+            </label>
+          </div>
+
+          <div class="modal-actions">
+            <button class="button button-secondary" type="button" data-close-modal>Hủy</button>
+            <button id="saveProductButton" class="button button-primary" type="submit">Lưu sản phẩm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+    <script type="module" src="./js/admin.js"></script>
+  </body>
+</html>

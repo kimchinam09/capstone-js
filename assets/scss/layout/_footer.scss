@@ -1,0 +1,7 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.site-footer { margin-top: 72px; border-top: 1px solid $border; background: #fff; }
+.footer-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 16px; color: $muted; font-size: .9rem; }
+@include mobile { .footer-inner { padding-block: 24px; flex-direction: column; justify-content: center; } }
+

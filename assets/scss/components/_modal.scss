@@ -1,0 +1,23 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.overlay, .modal-backdrop { position: fixed; inset: 0; z-index: 40; background: rgba(15, 23, 42, .52); backdrop-filter: blur(3px); }
+.cart-panel { position: fixed; inset: 0 0 0 auto; z-index: 50; width: min(520px, 100%); display: grid; grid-template-rows: auto 1fr auto; background: #fff; box-shadow: -20px 0 60px rgba(15, 23, 42, .18); transform: translateX(105%); transition: transform .3s ease; &.open { transform: translateX(0); } }
+.cart-header { padding: 24px; display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 1px solid $border; h2 { margin: 0; } }
+.cart-body { padding: 8px 24px; overflow-y: auto; }
+.cart-footer { padding: 20px 24px 24px; border-top: 1px solid $border; background: #fff; }
+.cart-total { margin-bottom: 16px; display: flex; justify-content: space-between; font-size: 1.05rem; strong { font-size: 1.25rem; } }
+.cart-item { padding: 18px 0; display: grid; grid-template-columns: 76px 1fr auto; gap: 14px; border-bottom: 1px solid $border; img { width: 76px; height: 76px; padding: 7px; border-radius: 12px; object-fit: contain; background: #f5f6fa; } h3 { margin: 0 0 4px; font-size: .95rem; } p { margin-bottom: 10px; color: $muted; font-size: .85rem; } }
+.cart-item-side { display: flex; align-items: flex-end; justify-content: space-between; flex-direction: column; gap: 12px; white-space: nowrap; font-size: .9rem; }
+.quantity-control { width: max-content; display: flex; align-items: center; border: 1px solid $border; border-radius: 9px; overflow: hidden; button { width: 31px; height: 31px; border: 0; background: #f8f9fb; font-size: 1.1rem; } span { min-width: 30px; text-align: center; font-size: .82rem; font-weight: 700; } }
+.remove-button { padding: 0; border: 0; color: $danger; background: none; font-size: .8rem; font-weight: 700; }
+.empty-cart { min-height: 65vh; display: grid; place-content: center; text-align: center; color: $muted; span { font-size: 3.5rem; } h3 { margin: 16px 0 6px; color: $text; } }
+.modal { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 24px; }
+.modal-dialog { position: relative; z-index: 61; width: min(700px, 100%); max-height: calc(100vh - 48px); overflow-y: auto; border-radius: 20px; background: #fff; box-shadow: $shadow; }
+.modal-header { position: sticky; top: 0; z-index: 1; padding: 22px 26px; display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 1px solid $border; background: #fff; h2 { margin: 0; } }
+.modal form { padding: 24px 26px; }
+.modal-actions { margin-top: 22px; display: flex; justify-content: flex-end; gap: 10px; }
+.toast { position: fixed; right: 24px; bottom: 24px; z-index: 100; max-width: min(380px, calc(100% - 32px)); padding: 13px 17px; border-radius: 11px; color: #fff; background: $success; box-shadow: $shadow; opacity: 0; transform: translateY(15px); pointer-events: none; transition: .25s ease; &.show { opacity: 1; transform: translateY(0); } &.error { background: $danger; } }
+
+@include mobile { .cart-item { grid-template-columns: 62px 1fr; img { width: 62px; height: 62px; } } .cart-item-side { grid-column: 2; align-items: center; flex-direction: row-reverse; } .modal { padding: 10px; } .modal-dialog { max-height: calc(100vh - 20px); } .modal-header, .modal form { padding: 18px; } }
+

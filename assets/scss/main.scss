@@ -1,0 +1,17 @@
+// import theo thứ tụ của mô hình 7-1
+@use "abstracts/variables";
+@use "abstracts/mixins";
+@use "vendors/external";
+@use "base/reset";
+@use "base/typography";
+@use "themes/default";
+@use "layout/header";
+@use "layout/footer";
+@use "components/buttons";
+@use "components/forms";
+@use "components/cards";
+@use "components/modal";
+@use "pages/landing";
+@use "pages/customer";
+@use "pages/admin";
+

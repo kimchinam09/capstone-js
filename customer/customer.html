@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1/0" />
+    <meta name="description" content="Website bán điện thoại - Capstone JavaScript" />
+    <title>CyberStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+  </head>
+  <body class="customer-page">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./customer.html" aria-label="PhoneStore - Trang chủ">
+          <span class="brand-icon">P</span>
+          <span>CyberStore</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Điều hướng chính">
+          <a class="nav-link active" href="#products">Sản phẩm</a>
+          <a class="nav-link" href="../admin/admin.html">Quản trị</a>
+          <button id="openCartButton" class="cart-button" type="button" aria-label="Mở giỏ hàng">
+            <span aria-hidden="true">🛒</span>
+            Giỏ hàng
+            <span id="cartCount" class="cart-count">0</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-content">
+          <div>
+            <p class="eyebrow">Công nghệ trong tầm tay</p>
+            <h1>Chọn chiếc điện thoại phù hợp với bạn</h1>
+            <p class="hero-description">
+              Khám phá các mẫu điện thoại mới nhất và trải nghiệm mua sắm trực tuyến tiện lợi tại CyberStore. Chúng tôi cung cấp các sản phẩm chất lượng từ các thương hiệu hàng đầu, đảm bảo mang đến sự hài lòng cho khách hàng.
+            </p>
+            <a class="button button-primary" href="#products">Xem sản phẩm</a>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="phone-shape phone-back"></div>
+            <div class="phone-shape phone-front"><span>CyberStore</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="products-section container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Danh mục sản phẩm</p>
+            <h2>Điện thoại nổi bật</h2>
+          </div>
+          <label class="filter-field" for="typeFilter">
+            <span>Lọc theo hãng</span>
+            <select id="typeFilter">
+              <option value="all">Tất cả sản phẩm</option>
+              <option value="samsung">Samsung</option>
+              <option value="iphone">iPhone</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="productStatus" class="status-message">Đang tải sản phẩm...</div>
+        <div id="productList" class="product-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© 2026 PhoneStore</span>
+        <span>Capstone JavaScript - CyberSoft</span>
+      </div>
+    </footer>
+
+    <div id="cartOverlay" class="overlay" hidden></div>
+    <aside id="cartPanel" class="cart-panel" aria-hidden="true" aria-labelledby="cartTitle">
+      <div class="cart-header">
+        <div>
+          <p class="eyebrow">Đơn hàng của bạn</p>
+          <h2 id="cartTitle">Giỏ hàng</h2>
+        </div>
+        <button id="closeCartButton" class="icon-button" type="button" aria-label="Đóng giỏ hàng">×</button>
+      </div>
+
+      <div id="cartBody" class="cart-body"></div>
+
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Tổng cộng</span>
+          <strong id="cartTotal">0 ₫</strong>
+        </div>
+        <button id="checkoutButton" class="button button-primary button-full" type="button">Thanh toán</button>
+      </div>
+    </aside>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+    <script type="module" src="./js/customer.js"></script>
+  </body>
+</html>
+

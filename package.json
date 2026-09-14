@@ -1,0 +1,14 @@
+{
+  "name": "capstone-js-phone-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MobileStore",
+  "scripts": {
+    "sass": "sass assets/scss/main.scss assets/css/main.css --style=expanded --no-source-map",
+    "sass:watch": "sass assets/scss/main.scss assets/css/main.css --watch --style=expanded"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}
+

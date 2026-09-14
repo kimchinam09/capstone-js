@@ -1,0 +1,17 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.hero { overflow: hidden; color: #fff; background: radial-gradient(circle at 75% 15%, rgba(139, 92, 246, .8), transparent 26%), linear-gradient(130deg, #111827, #282967 58%, #5b5cf0); }
+.hero-content { min-height: 510px; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 48px; .eyebrow { color: #c7d2fe; } h1 { max-width: 700px; margin-bottom: 22px; } }
+.hero-description { max-width: 590px; margin-bottom: 30px; color: #d8dbea; font-size: 1.05rem; }
+.hero-visual { position: relative; min-height: 420px; }
+.phone-shape { position: absolute; width: 205px; height: 390px; border: 9px solid #151727; border-radius: 35px; box-shadow: 0 30px 60px rgba(0,0,0,.3); }
+.phone-back { top: 35px; left: 25%; background: linear-gradient(145deg, #dbeafe, #a5b4fc); transform: rotate(-11deg); &::before { content: ""; position: absolute; top: 18px; left: 18px; width: 65px; height: 65px; border-radius: 18px; background: radial-gradient(circle at 28% 28%, #111827 0 13px, transparent 14px), radial-gradient(circle at 72% 28%, #111827 0 13px, transparent 14px), radial-gradient(circle at 28% 72%, #111827 0 13px, transparent 14px), #c7d2fe; } }
+.phone-front { top: 10px; right: 12%; display: grid; place-items: center; color: #fff; background: radial-gradient(circle at 50% 30%, #a78bfa, transparent 28%), linear-gradient(150deg, #23255e, #5b5cf0); transform: rotate(8deg); span { font-weight: 800; letter-spacing: .06em; } &::before { content: ""; position: absolute; top: 9px; width: 75px; height: 18px; border-radius: 0 0 14px 14px; background: #151727; } }
+.products-section { padding-top: 76px; }
+.section-heading { margin-bottom: 30px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; h2 { margin-bottom: 0; } }
+.product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+
+@include tablet { .hero-content { min-height: 450px; grid-template-columns: 1fr .7fr; } .hero-visual { min-height: 360px; transform: scale(.82); } .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@include mobile { .hero-content { min-height: 0; padding-block: 70px; grid-template-columns: 1fr; } .hero-visual { display: none; } .section-heading { align-items: stretch; flex-direction: column; } .product-grid { grid-template-columns: 1fr; } .products-section { padding-top: 54px; } }
+

@@ -1,0 +1,108 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.landing-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(91, 92, 240, 0.16), transparent 30%),
+    radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.16), transparent 30%),
+    $background;
+}
+
+.landing-main {
+  min-height: 100vh;
+  padding: 40px 16px;
+  display: grid;
+  place-items: center;
+}
+
+.landing-content {
+  width: min(100%, 720px);
+  padding: clamp(28px, 6vw, 58px);
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: $shadow;
+
+  h1 {
+    margin-bottom: 16px;
+    font-size: clamp(2.25rem, 6vw, 3.8rem);
+  }
+}
+
+.landing-brand {
+  width: max-content;
+  margin-bottom: 42px;
+}
+
+.landing-description {
+  max-width: 590px;
+  margin-bottom: 34px;
+  color: $muted;
+  font-size: 1.02rem;
+}
+
+.landing-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.landing-option {
+  min-height: 120px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  background: #fff;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: #c7d2fe;
+    box-shadow: 0 14px 30px rgba(31, 38, 70, 0.1);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  strong,
+  small {
+    display: block;
+  }
+
+  small {
+    margin-top: 5px;
+    color: $muted;
+    line-height: 1.4;
+  }
+}
+
+.landing-option-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #eeeeff;
+  font-size: 1.35rem;
+}
+
+.landing-arrow {
+  color: $primary;
+  font-size: 2rem;
+}
+
+@include mobile {
+  .landing-options {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-option {
+    min-height: 105px;
+  }
+}

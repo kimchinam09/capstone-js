@@ -1,0 +1,19 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(228, 231, 236, .85); background: rgba(255, 255, 255, .92); backdrop-filter: blur(14px); }
+.header-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1.05rem; font-weight: 800; }
+.brand-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; color: #fff; background: linear-gradient(135deg, $primary, #8b5cf6); }
+.main-nav { display: flex; align-items: center; gap: 22px; }
+.nav-link { color: $muted; font-weight: 600; transition: color .2s ease; &:hover, &.active { color: $primary; } }
+.admin-label { padding: 7px 12px; border-radius: 999px; color: $primary; background: #eeeeff; font-size: .85rem; font-weight: 700; }
+
+@include mobile {
+  .header-inner { min-height: 64px; gap: 12px; }
+  .brand > span:last-child { display: none; }
+  .main-nav { gap: 12px; }
+  .nav-link { font-size: .88rem; }
+  .admin-label { display: none; }
+}
+

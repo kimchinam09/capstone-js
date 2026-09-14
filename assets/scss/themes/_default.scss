@@ -1,0 +1,5 @@
+@use "../abstracts/mixins" as *;
+
+.container { @include container; }
+.status-message { padding: 36px; border: 1px dashed #cfd4dc; border-radius: 18px; color: #667085; text-align: center; background: #fff; }
+

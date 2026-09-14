@@ -1,0 +1,13 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+input, select, textarea { width: 100%; border: 1px solid $border; border-radius: 11px; color: $text; background: #fff; transition: border-color .2s, box-shadow .2s; &:focus { border-color: $primary; @include focus-ring; } &.invalid { border-color: $danger; } }
+input, select { min-height: 46px; padding: 0 13px; }
+textarea { padding: 11px 13px; resize: vertical; }
+.filter-field { display: flex; align-items: center; gap: 12px; color: $muted; font-size: .9rem; font-weight: 600; select { min-width: 190px; } &.compact select { min-width: 210px; } }
+.search-field { flex: 1; max-width: 460px; input { padding-left: 16px; } }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.form-field { display: flex; flex-direction: column; gap: 5px; font-size: .88rem; font-weight: 700; &.full-width { grid-column: 1 / -1; } }
+.error-message { min-height: 17px; color: $danger; font-size: .76rem; font-weight: 500; }
+
+@include mobile { .filter-field { width: 100%; align-items: stretch; flex-direction: column; gap: 6px; select { min-width: 0; } } .form-grid { grid-template-columns: 1fr; } .form-field.full-width { grid-column: auto; } }

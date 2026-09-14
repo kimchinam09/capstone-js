@@ -1,0 +1,12 @@
+@use "../abstracts/variables" as *;
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: $background; color: $text; }
+img { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+button, select { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+[hidden] { display: none !important; }
+.no-scroll { overflow: hidden; }
+

@@ -1,0 +1,18 @@
+@mixin container {
+  width: min(100% - 32px, 1180px);
+  margin-inline: auto;
+}
+
+@mixin focus-ring {
+  outline: 3px solid rgba(91, 92, 240, 0.2);
+  outline-offset: 2px;
+}
+
+@mixin tablet {
+  @media (max-width: 900px) { @content; }
+}
+
+@mixin mobile {
+  @media (max-width: 640px) { @content; }
+}
+
